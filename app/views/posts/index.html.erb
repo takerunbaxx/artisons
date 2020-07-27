@@ -19,13 +19,13 @@
             <p class="mb-auto"><%=post.outline%></p>
             <%=link_to "Continue reading...", post, class: "stretched-link" %>
         </div>
-    <section class="edit-button"> 
+    <section class="pr-4 edit-button"> 
        <% if current_user == post.user %>
-        <%= link_to "Edit Post", edit_post_path(post.id), class: "edit-post" %>
-        <%= link_to "Delete Post", post, method: :delete, data: { confirm: "You sure?" }, class: "delete-post"%>
+        <%= link_to "Edit Post", edit_post_path(post.id), class: "btn btn-secondary" %>
+        <%= link_to "Delete Post", post, method: :delete, data: { confirm: "You sure?" }, class: "btn btn-secondary%"%>
       <% end %>
     </section>
-     <div id="like_form_<%=post.id %>" style="padding-right: 10px;">
+     <div class="pt-1 pr-5" id="like_form_<%=post.id %>">
        <%=render "likes/like_button", post: post%>
      </div>
         <div class="ml-auto">
