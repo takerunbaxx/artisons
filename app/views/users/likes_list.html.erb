@@ -1,0 +1,40 @@
+
+
+<%if logged_in?%>
+
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1>Your liked posts</h1>
+      <p class="lead text-muted">These posts surely remind you of something important that you once got when you read.</p>
+    </div>
+  </section>
+  
+<div class="album py-5 bg-light">
+    <div class="row">
+       <%@likes.each do |like|%>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <div class="d-flex pl-2">
+              <%=render "posts/post_image100", post: like%> 
+              <section class="pt-3 pl-3">
+                <h6><%=link_to like.user.name, user_path(like.user.id)%></h6>
+                <h6><%=like.title%></h6>
+              </section>
+            </div>
+            <div class="card-body">
+              <p class="card-text"><%=like.outline%></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                 <%=link_to "View", post_path(like.id), class: "btn btn-sm btn-outline-secondary"%>
+                </div>
+                <small class="text-muted"><%= like.created_at %></small>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+       
+      </div>
+  </div>
+  
+<%end%>

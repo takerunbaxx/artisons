@@ -1,0 +1,7 @@
+      <%=form_with(model: post, local: true) do |f|%>
+      <% if post.post_image_name? %>
+        <%= image_tag post.post_image_name.thumb.url, class: "image-style-post-else250"%>
+      <% else %>
+        <%= image_tag "/assets/default_post.jpg", class: "image-style-post-else250" %>
+      <% end %>
+    <% end %>

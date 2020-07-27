@@ -1,0 +1,15 @@
+<h5 class="text-center">Notification</h5>
+    <%= link_to notification_path(@notifications), method: :delete do %>
+        <i class="fas fa-trash fa-lg" style="color: black;"></i>
+        <h7 style="color: black;">Delete All</h7>
+    <% end %> 
+    <hr>
+   <% @notifications = @notifications.where.not(visiter_id: current_user.id)%>
+<% if @notifications.exists? %>
+    <div class="users-index">
+        <%= render @notifications %>
+        <%= paginate @notifications %>
+    </div>
+<% else %>
+    <p>No Older Notifications</p>
+<% end %>

@@ -1,0 +1,75 @@
+  
+<div class="row">
+<div class="col-10 ml-5 mb-3 ">
+  <h2 style="font-family:century;color:#999999;">Edit Profile</h2>
+     
+    <%=form_with(model: @user, local: true) do |f|%>
+      <% if @user.image? %>
+        <%= image_tag @user.image.thumb.url, class: "image-style-user-show" %>
+       <label>
+      <%= f.check_box :remove_image %>
+      Remove Image
+      </label>
+      <% else %>
+        <%= image_tag "/assets/default.jpg", :size => '200x200', class: "image-style-user-show" %>
+      <% end %>
+     <button type="button" class="btn btn-outline-light" style="color: black;">
+         <%= f.label :image, "Upload Image"%>
+         <%= f.file_field :image, class: "form-control",accept: 'image/jpeg,image/gif,image/png' %>
+      </button>
+ 
+   <%=render "layouts/error_messages", model: f.object%>
+
+        <div class="form-group">
+          <%=f.label :name, "User name"%>
+          <%=f.text_field :name, class: "form-control"%>
+        <div class="invalid-feedback">
+          Please enter User Name
+         </div>
+        </div>
+
+        <div class="form-group">
+          <%=f.label :email, "Email"%>
+          <%=f.text_field :email, class: "form-control"%>
+         <div class="invalid-feedback">
+          Please enter valid email adress
+         </div>
+        </div>
+
+        <div class="form-group">
+          <%=f.label :bio, "Biography"%>
+          <%=f.text_area :bio, class: "form-control"%>  
+          <div class="invalid-feedback">
+          Need at least one letter.
+         </div>
+        </div>
+
+        <div class="form-group">
+          <%=f.label :curiosity, "Category you like"%>
+          <%=f.text_field :curiosity, class: "form-control"%>
+         <div class="invalid-feedback">
+          Need at least one letter.
+         </div>
+        </div>
+        
+        <div class="form-group">
+          <%=f.label :role, "What is your role?"%>
+          <%=f.text_field :role, class: "form-control"%>        
+        </div>
+
+        <div class="form-group">
+          <%=f.label :country, "Country"%>
+          <%=f.country_select :country, class: "form-control"%>        
+        </div>
+
+        <div class="form-group">
+          <label>Gender: <%= f.radio_button :gender, "Male" %> Male  / <%= f.radio_button :gender, "Female" %> Female /  <%= f.radio_button :gender, "else" %> else</label>
+        </div>
+        
+        <div class="submit-button" style="font-family:century;">
+        <%= f.submit 'Set Up Your Profile', class: 'btn btn-outline-secondary btn-lg' %>
+        </div>
+
+      <%end%>
+    </div>
+</div>

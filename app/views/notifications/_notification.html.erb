@@ -1,0 +1,11 @@
+<% visiter = notification.visiter %>
+<% post = notification.post %>
+
+<div class="user-view clearfix">
+  <%= render "users/image", user: visiter%>
+  <%= notification_form(notification) %><span class="moderate-font"><%= " (#{time_ago_in_words(notification.created_at)} ago)" %></span>
+  <% if !@comment.nil? %>
+    <p class="notification-comment" style="font-family:century; color: #808080; "><%= @comment %></p>
+  <% end %>
+  <hr>
+</div>

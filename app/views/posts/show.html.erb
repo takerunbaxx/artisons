@@ -1,0 +1,34 @@
+<div class="row">
+
+  <section="post-show-image">
+  <%=render "post_image250", post: @post%>
+</section>
+
+  <div id="like_form_show">
+     <%=render "likes/like_button", post: @post%>
+</div>
+
+  <div class="article-wrapper">
+    <div class="post-title">
+        <h5>category:<%=@post.category%></h5>
+           <div style="display:flex;">
+           <h3 class="mb-0">Title: <%=@post.title%> </h3> 
+           <p class="pl-3"><a href=<%user_path(@post.user)%>> / Written by <%=@post.user.name%></a></p>
+           </div>          
+        <span class="text-muted">posted at <%= @post.created_at %></span>
+     </div>
+  <div class="post-content">
+    <p class="article-inside"><%=@post.content%></p>
+  </div>
+</div>
+  <div class="col-10">
+     <h4 class="text-left title">Comments here...</h4>
+    <div id="comments_area"> <%= render 'comments/comment_list', comments: @comments %> </div>
+    
+    <hr>
+        <div class="comment-create">
+            <h5 class="text-left"></h5>
+             <%= render 'comments/comment_form', comment: @comment, post: @post %>
+        </div>
+  </div>
+</div>

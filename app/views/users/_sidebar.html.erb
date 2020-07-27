@@ -1,0 +1,38 @@
+
+<%if current_user == @user%>
+<aside class="sidebar-sticky">
+        <ul class="nav flex-column bd-sidebar">
+
+          <li class="nav-item">
+            <%=link_to  new_post_path do%>
+            <i class="fas fa-plus fa-lg"></i>   Create New Article
+            <%end%>
+          </li>
+          <li class="nav-item">
+            <%=link_to posts_path do%>
+            <i class="fas fa-eye fa-lg"></i>    See Past Article
+          <%end%>
+          </li>
+          <li class="nav-item">
+            <%=link_to likes_list_user_path(current_user.id) do%>
+            <i class="fas fa-thumbs-up fa-lg"></i>    Likes
+            <%end%>
+          </li>
+          <li class="nav-item">
+            <%=link_to edit_user_path(@user.id) do%>
+            <i class="fas fa-user-edit fa-lg"></i>    Seting Profile    
+            <%end%>
+          </li>
+          <li class="nav-item">
+            <%=link_to notifications_path do%>
+            <%if unchecked_notifications.any?%>
+              <i class="fas fa-bell faa-ring animated fa-lg"></i>     Notification
+              <%else%>
+              <i class="fas fa-bell fa-lg" style="font-size: 1.5em;"></i>    Notification 
+            <%end%>
+            <%end%>
+          </li>
+        </ul>
+      </aside>  
+
+<%end%>

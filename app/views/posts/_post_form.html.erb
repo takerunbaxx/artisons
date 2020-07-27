@@ -1,0 +1,45 @@
+    
+  <div class="mt-5 col-sm-9 offset-sm-2">
+    <%=form_with(model: @post, local: true) do |f|%>
+    <%=render "layouts/error_messages", model: f.object%>
+      <% if @post.post_image_name? %>
+        <%= image_tag @post.post_image_name.thumb.url %>
+       <label>
+      <%= f.check_box :remove_image %>
+      Remove Image
+      </label>
+      <% else %>
+        <%= image_tag "/assets/default_post.jpg", :size => "300"  %>
+      <% end %>
+     <button type="button" class="btn btn-outline-light" style="color: black;">
+         <%= f.label :post_image, "Upload Image"%>
+         <%= f.file_field :post_image, class: "form-control",accept: 'image/jpeg,image/gif,image/png' %>
+      </button>
+    <section>  
+       <% if current_user == @post.user %>
+        <%= link_to "Delete article", @post, method: :delete, data: { confirm: "You sure?" }%>
+      <% end %>
+    </section>
+  <div class="form-group mt-5">
+    <%=f.label :category, "1. Category"%>
+    <%=f.select :category, [["Politics", "Politics"], ["Economy", "Economy"], ["Business", "Business"], ["History", "History" ],["Religion, Art", "Religion, Art"],["Litarature, Art", "Litarature, Art"], ["Others", "Others"]], prompt: "Select category on this article", class: "category-selector"%>
+  </div>
+  
+  <div class="form-group">
+    <%=f.label :title, "2. Title of article" %>
+    <%=f.text_field :title, class: "form-control", placeholder: "Up to 50 letter"%>
+  </div>
+    <div class="form-group">
+    <%=f.label :outline, "3. Set outline that would be heading of article" %>
+    <%=f.text_area :outline, class: "form-control", rows: "3"%>
+  </div>
+  
+  <div class="form-group">
+    <%=f.label :content, "3. Main part of article" %>
+    <%=f.text_area :content, class: "form-control", rows: "10"%>
+  </div>
+    <%= f.submit 'Ready to Post', class: "btn btn-outline-secondary btn-lg" %>
+    <% end %>
+  
+</div>
+

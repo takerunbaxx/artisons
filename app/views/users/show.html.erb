@@ -1,0 +1,93 @@
+<div class="main-wrapper">
+  <%=render "users/sidebar", user: @user%>
+
+<main>
+  <div class="profile-information">
+    <div class="user-image">
+      
+ <div class="card-profile">
+    <div class="flip">  <div class="card"> <div class="face"> 
+      <div class="details">
+        <h4 class="card-name">@<%=@user.name%></h4>
+        <hr>
+        <h5 class="role">Job Role: <%=@user.role%> </h5>
+        <h5 class="role">Country: <%=@user.country%> </h5>
+        <a href="#"><i class="fab fa-twitter-square fa-lg"></i></a>
+        <a href="#"><i class="fab fa-facebook-square fa-lg"></i></a>
+        <a href="#" style="color: #FF82B2;"><i class="fab fa-instagram-square fa-lg"></i></a>
+        
+    <div class="follow_button">
+        <% unless current_user == @user %>
+        <div id="follow_form_show">
+       <% if current_user.following?(@user) %>
+       <%= render 'relationships/unfollow', object: @user%>
+       <% else %>
+       <%= render 'relationships/follow', object: @user %>
+       <% end %>
+       </div>
+       <% end %>
+    </div>
+         
+      </div>
+        <div class="avatar">
+          <%=form_with(model: @user, local: true) do |f|%>
+          <% if @user.image? %>
+        <%= image_tag @user.image.thumb.url, class: "image-style-user-show" %>
+          <% else %>
+           <%= image_tag "default.jpg", class: "image-style-user-show"%>
+          <% end %>
+          <% end %> 
+         <p style="font-family: times new roman;"><%=@user.name%></p>        
+         </div>
+    </div>
+
+      </div> 
+    </div> 
+  </div> 
+  </div>
+    </div>
+
+
+<div>
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  
+  <li class="nav-item">
+    <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About <%=@user.name%></a>
+  </li>
+  
+  <li class="nav-item">
+    <a class="nav-link" id="recent-tab" data-toggle="tab" href="#recent" role="tab" aria-controls="recent" aria-selected="false">Recent Action</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="subscribing-tab" data-toggle="tab" href="#subscribing" role="tab" aria-controls="subscribing" aria-selected="false">Subscribing</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="subscribers-tab" data-toggle="tab" href="#subscribers" role="tab" aria-controls="subscribers" aria-selected="false">Subscribers</a>
+  </li>
+
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  
+  <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+      <%= render "about"%>
+  </div>
+  
+  <div class="tab-pane fade" id="recent" role="tabpanel" aria-labelledby="recent-tab">
+      <%= render "recent"%>
+  </div>
+  
+  <div class="tab-pane fade" id="subscribing" role="tabpanel" aria-labelledby="subscribing-tab">
+      <%= render "followings"%>
+  </div>
+  
+  <div class="tab-pane fade" id="subscribers" role="tabpanel" aria-labelledby="subscribers-tab">
+          <%= render "followers"%>
+  </div>
+  
+
+</div>
+
+</main>
+</div>

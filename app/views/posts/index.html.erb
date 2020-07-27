@@ -1,0 +1,37 @@
+
+<section class="jumbotron text-center">
+    <div class="container">
+      <h1>Posts Library</h1>
+      <p class="lead text-muted"><%=@count_posts%> posts you have now.</p>
+    </div>
+  </section>
+  
+
+<div class="post-index">
+<% @posts.each do |post|%>
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative br-20">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">Category: <%=post.category%> </strong>
+           <div style="display:flex;">
+                <h3 class="mb-0">Title: <%=post.title%> </h3> 
+           </div>
+       <span class="text-muted">posted at <%= post.created_at %> <a href="<%=user_path(post.user)%>" class="pl-3"> / Written by <%=post.user.name%></a></span>
+            <p class="mb-auto"><%=post.outline%></p>
+            <%=link_to "Continue reading...", post, class: "stretched-link" %>
+        </div>
+    <section class="edit-button"> 
+       <% if current_user == post.user %>
+        <%= link_to "Edit Post", edit_post_path(post.id), class: "edit-post" %>
+        <%= link_to "Delete Post", post, method: :delete, data: { confirm: "You sure?" }, class: "delete-post"%>
+      <% end %>
+    </section>
+     <div id="like_form_<%=post.id %>" style="padding-right: 10px;">
+       <%=render "likes/like_button", post: post%>
+     </div>
+        <div class="ml-auto">
+          <%=render "post_image250", post: post%>
+        </div>
+
+  </div>
+  <%end%>
+ </div>

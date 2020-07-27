@@ -1,0 +1,26 @@
+
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <% @users.each do |user|%>
+    <div class="media text-muted pt-3">
+       <div id="follow_form">
+       <%=render "image", user: user%> 
+       </div>
+      <section class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <% unless current_user == user %>
+        <div id="follow_form_<%=user.id %>">
+       <% if current_user.following?(user) %>
+       <%= render 'relationships/unfollow', object: user %>
+       <% else %>
+       <%= render 'relationships/follow', object: user %>
+       <% end %>
+       </div>
+       <% end %>
+        <strong class="d-block text-gray-dark"><%=link_to user.name, user%></strong> 
+       <p style="padding-left: 15px;"><%=user.bio%></p>
+      </section>
+    </div>
+ <%end%>
+<%=paginate @users%>
+ </div>
+
+

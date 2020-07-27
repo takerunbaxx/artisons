@@ -1,0 +1,31 @@
+
+
+<header>
+<h1><%=link_to "Artisons", root_path, class: "app-logo"%></h1>
+
+<%if logged_in?%>
+
+<div class="search_container ml-5">
+  <%= form_with(url: users_path, method: :get, local: true) do |f| %>
+    <%= f.label :name, "Search with User Name"%>
+    <%= f.text_field :name %>
+    <%= f.submit "Search with User Name"%>
+  <%end%>
+</div>
+
+ <ul class="header-items" style="">
+     <li><%=link_to "GO TO USER-PAGE", user_path(current_user.id)%></li>
+     <li><%=link_to "NEW POST", new_post_path %></li>
+     <li><%=link_to "LOGOUT" , logout_path, method: :delete, data: { confirm: 'Are you going to logout？' }%></li>
+ </ul>
+<%else%>
+ <ul class="header-items">
+     <li><%=link_to "SIGN UP", signup_path %></li>
+     <li><%=link_to "LOGIN", login_path %></li>
+     <li><a href="#">LANGUAGE</a></li>
+  </ul>
+  <%end%>
+
+</header>
+
+

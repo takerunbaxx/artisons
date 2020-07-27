@@ -1,0 +1,52 @@
+
+<main class="toppage-main">
+<section class="toppage-top">
+    <ul class="top-of-top" style="font-family:HiraMinProN-W6;  list-style: none;">
+     <li><h3>The important thing is to not stop questioning. <br> Curiosity has its own reason for existing. <br>by Albert Einstein</h2></li>
+     <!--li><h3>重要なのは疑問を持ち続けること。<br>知的好奇心はそれ自体に存在意義があるものだ。<br> by アルバート・アインシュタイン</h2></li-->
+     <ul>
+</section>
+
+<div class="mt-5 jumbotron">
+    <div class="container">
+      <h4 class="display-5">Get it, then apply it here,  "Artisons"</h4>
+      <p>~Survive'In upcoming next era surrounded by too much information~</p>
+      <p>Intelligence × Knowledge  = Development </p>
+      <%if logged_in?%>
+      <p><a class="btn btn-info btn-lg" href="<%=user_path(current_user.id)%>" role="button">Go back your page =></a></p>
+      <%else%>
+      <p><a class="btn btn-info btn-lg" href="/signup" role="button">Sign up now »</a></p>
+      <%end%>
+    </div>
+  </div>
+    
+
+<div class="readme" style="display: flex;">
+    <ul class="readme-images" style="list-style: none;">
+        <li> <iframe width="600" height="350" src="https://www.youtube-nocookie.com/embed/nrFd63KCRu0?autoplay=1&mute=1&loop=1&playlist=nrFd63KCRu0&controls=0&amp;start=2" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></li>
+        <hr>
+        <li><img src="/assets/artisons_3.png" alt="Picture1" style="display: inline-block; box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.8);" width=" 600px" height="auto"/></li>
+    </ul>
+    <ul class="readme-text" style="list-style: none;">
+        <h4 class="text-center">Two concepts of Artisons</h4>
+        <li><h6>The reason of faundation "Artisons" is based on the two concepts, which would be necessary for us to survive in upcoming next era.</h6></li>
+        <li><h6>The one is that we believe the power of "reading". Some people may say, "videos are best", but if you face a intangible and unprecedended difficulty, what will be able to save you? Reading is the best way to strength your imagination to figure situations out.</h6></li>
+        <li><h6>The other might be more important, "Senses are only yours, then applying what you learn to others". Acquiring a knowledge, skill, experience, you must go through with your senses. We do believe that the interaction of different senses will help developments of each humanity.</h6></li>
+        <hr>
+        <h4 class="text-center">How to Use</h4>
+        <li><p id="typing"></p></li>
+        <hr>
+        <li><h6 id="final"><i class="fas fa-arrow-left"></i> The article was posted.   Very Simple, isn't IT ?</h6></li>
+    </ul>
+</div>
+
+</main>
+
+
+<script>
+
+  $('h3').hide().fadeIn(3000);
+  
+  $('#final').hide().fadeIn(13000);
+
+</script>

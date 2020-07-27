@@ -1,0 +1,14 @@
+
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <% @posts.each do |post|%>
+    <div class="media text-muted pt-3">
+       <%=render "posts/post_image100", post: post %> 
+      <section class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark"><%=link_to post.user.name, user_path(post.user.id)%> / posted at <%= post.created_at %></strong> 
+       <h6><%= link_to post.title, post_path(post.id) %></h6>
+       <p style="padding-left: 15px;"><%=post.outline%></p>
+      </section>
+    </div>
+       <%=paginate @posts%>
+ <%end%>
+ </div>
