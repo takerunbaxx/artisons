@@ -62,7 +62,6 @@ gem 'country_select'
 
 gem "jquery-rails"
 
-
 gem 'carrierwave'
 
 gem 'mini_magick'
@@ -73,3 +72,7 @@ group :development do
 end
 
 gem 'jquery-turbolinks'
+
+group :production do
+  gem 'pg', '>= 0.18', '< 2.0'
+end

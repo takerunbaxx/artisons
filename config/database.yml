@@ -52,3 +52,12 @@ production:
   database: artisons_production
   username: artisons
   password: <%= ENV['ARTISONS_DATABASE_PASSWORD'] %>
+  
+  
+  production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  database: artisons_production
+  username: artisons
+  password: <%= ENV['ARTISONS_DATABASE_PASSWORD'] %>

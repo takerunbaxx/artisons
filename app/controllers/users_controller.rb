@@ -19,7 +19,7 @@ end
 def create
   @user=User.new(user_params)
   if @user.save
-     flash.now[:success]="Welcome to Artisons! Please login from this page"
+     flash[:success]="Welcome to Artisons! Please login from this page"
      redirect_to login_url
   else
       flash.now[:danger]="Registration failed"
